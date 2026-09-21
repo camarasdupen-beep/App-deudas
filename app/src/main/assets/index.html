@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#53643f">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Mis Deudas">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="icon-192.png">
+  <title>Control de deudas</title>
+  <style>
+    :root{--olive:#53643f;--olive2:#6f8058;--sand:#f3eee3;--ink:#242820;--muted:#70756b;--card:#fff;--line:#e5e0d5;--red:#ad443b;--green:#49714b;--shadow:0 12px 30px #26301d16}
+    *{box-sizing:border-box}body{margin:0;background:var(--sand);color:var(--ink);font:15px/1.45 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}button,input,select,textarea{font:inherit}button{cursor:pointer}.shell{max-width:980px;margin:auto;min-height:100vh;padding:0 16px 90px}.top{margin:0 -16px 22px;padding:calc(22px + env(safe-area-inset-top)) 20px 24px;background:linear-gradient(135deg,#455434,#687c4d);color:#fff;border-radius:0 0 26px 26px;box-shadow:var(--shadow)}.topline{display:flex;justify-content:space-between;gap:14px;align-items:center}.eyebrow{font-size:11px;letter-spacing:.18em;text-transform:uppercase;opacity:.8}.top h1{font-size:28px;margin:3px 0 0}.iconbtn{border:1px solid #ffffff50;background:#ffffff14;color:#fff;border-radius:13px;padding:10px 13px}.summary{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:20px}.metric{background:#ffffff13;border:1px solid #ffffff25;border-radius:16px;padding:13px}.metric small{display:block;opacity:.78}.metric strong{display:block;font-size:19px;margin-top:4px}.toolbar{display:grid;grid-template-columns:1fr auto auto;gap:9px;margin-bottom:15px}.field,.select{width:100%;border:1px solid var(--line);background:#fff;border-radius:13px;padding:12px;color:var(--ink);outline:none}.field:focus,.select:focus{border-color:var(--olive2);box-shadow:0 0 0 3px #6f80581c}.primary{border:0;background:var(--olive);color:#fff;padding:12px 17px;border-radius:13px;font-weight:700;box-shadow:0 7px 17px #53643f2b}.secondary{border:1px solid var(--line);background:#fff;color:var(--ink);padding:11px 14px;border-radius:12px}.danger{color:var(--red)}.list{display:grid;gap:12px}.empty{background:#fff;border:1px dashed #cfc8b9;border-radius:18px;padding:45px 20px;text-align:center;color:var(--muted)}.empty b{display:block;color:var(--ink);font-size:18px;margin-bottom:6px}.debt{background:var(--card);border:1px solid var(--line);border-radius:19px;box-shadow:0 5px 18px #29301f0a;overflow:hidden}.debtHead{padding:16px;display:grid;grid-template-columns:1fr auto;gap:12px}.titleRow{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.titleRow h3{margin:0;font-size:18px}.chip{font-size:11px;font-weight:750;padding:4px 8px;border-radius:99px;background:#eef1e9;color:var(--olive)}.chip.late{background:#f7e8e5;color:var(--red)}.chip.done{background:#e5f0e5;color:var(--green)}.concept{color:var(--muted);margin-top:4px}.amount{text-align:right}.amount strong{display:block;font-size:20px;color:var(--olive)}.amount small{color:var(--muted)}.bar{height:6px;background:#ece9e1;margin:0 16px;border-radius:99px;overflow:hidden}.bar span{height:100%;display:block;background:var(--olive2)}.meta{display:flex;gap:14px;flex-wrap:wrap;padding:11px 16px 14px;color:var(--muted);font-size:13px}.actions{display:flex;gap:8px;padding:0 16px 15px}.actions button{flex:1}.details{border-top:1px solid var(--line);padding:15px 16px;background:#fbfaf7}.payRow{display:grid;grid-template-columns:1fr auto;gap:8px;padding:8px 0;border-bottom:1px solid #ece8de}.payRow:last-child{border:0}.payRow small{color:var(--muted)}.payRow strong{color:var(--green)}.miniDel{border:0;background:transparent;color:var(--red);padding:3px 7px}.notes{margin-top:12px;color:var(--muted);font-size:13px}.fab{position:fixed;right:max(19px,calc((100vw - 980px)/2 + 19px));bottom:calc(18px + env(safe-area-inset-bottom));border:0;border-radius:18px;background:var(--olive);color:#fff;font-weight:800;font-size:16px;padding:15px 20px;box-shadow:0 12px 25px #3c4b2d55}.overlay{position:fixed;inset:0;background:#1e241cb8;display:none;align-items:flex-end;justify-content:center;z-index:10}.overlay.show{display:flex}.modal{width:min(600px,100%);max-height:92vh;overflow:auto;background:#fff;border-radius:24px 24px 0 0;padding:22px 18px calc(20px + env(safe-area-inset-bottom));animation:up .18s ease}@keyframes up{from{transform:translateY(25px);opacity:.6}}.modalTop{display:flex;justify-content:space-between;align-items:center;margin-bottom:17px}.modalTop h2{margin:0;font-size:21px}.close{border:0;background:#f1efe9;width:38px;height:38px;border-radius:50%;font-size:21px}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}.label{display:block;font-size:12px;font-weight:750;margin:0 0 5px;color:#555b50}.group{margin-bottom:13px}.modalActions{display:flex;gap:9px;margin-top:18px}.modalActions button{flex:1}.menu{position:fixed;inset:0;background:#1e241c78;display:none;z-index:9}.menu.show{display:block}.menuBox{position:absolute;right:16px;top:82px;background:#fff;border-radius:16px;padding:8px;box-shadow:var(--shadow);width:215px}.menuBox button,.fileLabel{display:block;width:100%;border:0;background:#fff;text-align:left;padding:12px;border-radius:10px;color:var(--ink)}.menuBox button:hover,.fileLabel:hover{background:#f2efe7}.fileLabel input{display:none}.footnote{text-align:center;color:var(--muted);font-size:12px;margin-top:25px}@media(max-width:620px){.summary{grid-template-columns:1fr 1fr}.metric:last-child{grid-column:1/-1}.toolbar{grid-template-columns:1fr 120px}.toolbar .primary{display:none}.debtHead{grid-template-columns:1fr}.amount{text-align:left}.grid2{grid-template-columns:1fr}.top h1{font-size:25px}}@media(min-width:621px){.fab{display:none}.overlay{align-items:center}.modal{border-radius:24px;margin:20px}}
+    .installBar{display:none;align-items:center;justify-content:space-between;gap:12px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px 14px;margin:-7px 0 15px;box-shadow:0 5px 18px #29301f0a}.installBar.show{display:flex}.installBar span{font-size:13px}.installBar b{display:block;font-size:15px}
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header class="top">
+      <div class="topline"><div><div class="eyebrow">CONTROL PERSONAL</div><h1>Deudas y pagos</h1></div><button class="iconbtn" id="menuBtn" aria-label="Opciones">•••</button></div>
+      <section class="summary">
+        <div class="metric"><small>Deuda total</small><strong id="totalDebt">$ 0</strong></div>
+        <div class="metric"><small>Total pagado</small><strong id="totalPaid">$ 0</strong></div>
+        <div class="metric"><small>Saldo pendiente</small><strong id="totalPending">$ 0</strong></div>
+      </section>
+    </header>
+    <section class="installBar" id="installBar"><span><b>Instalar en este celular</b>Usala como una app y también sin internet.</span><button class="primary" id="installBtn">Instalar</button></section>
+    <section class="toolbar">
+      <input class="field" id="search" placeholder="Buscar nombre o concepto…">
+      <select class="select" id="filter" aria-label="Filtrar"><option value="pending">Pendientes</option><option value="all">Todas</option><option value="late">Vencidas</option><option value="done">Pagadas</option></select>
+      <button class="primary" onclick="openDebt()">+ Nueva deuda</button>
+    </section>
+    <section class="list" id="list"></section>
+    <p class="footnote">Los datos quedan guardados únicamente en este dispositivo.</p>
+  </main>
+  <button class="fab" onclick="openDebt()">+ Nueva deuda</button>
+
+  <div class="menu" id="menu" onclick="if(event.target===this)toggleMenu()"><div class="menuBox">
+    <button onclick="exportBackup()">Descargar copia de seguridad</button>
+    <label class="fileLabel">Restaurar copia<input id="importFile" type="file" accept="application/json"></label>
+    <button onclick="exportCSV()">Exportar resumen en CSV</button>
+  </div></div>
+
+  <div class="overlay" id="debtModal"><form class="modal" id="debtForm">
+    <div class="modalTop"><h2 id="debtModalTitle">Nueva deuda</h2><button type="button" class="close" onclick="closeModal('debtModal')">×</button></div>
+    <input type="hidden" id="debtId">
+    <div class="group"><label class="label">PERSONA / EMPRESA *</label><input class="field" id="name" required maxlength="80" placeholder="Ej.: Juan Pérez"></div>
+    <div class="group"><label class="label">CONCEPTO *</label><input class="field" id="concept" required maxlength="100" placeholder="Ej.: Compra de mercadería"></div>
+    <div class="grid2">
+      <div class="group"><label class="label">IMPORTE TOTAL *</label><input class="field" id="amount" type="number" required min="0.01" step="0.01" inputmode="decimal" placeholder="0"></div>
+      <div class="group"><label class="label">VENCIMIENTO</label><input class="field" id="due" type="date"></div>
+    </div>
+    <div class="group"><label class="label">NOTAS</label><textarea class="field" id="notes" rows="3" maxlength="300" placeholder="Información adicional…"></textarea></div>
+    <div class="modalActions"><button type="button" class="secondary" onclick="closeModal('debtModal')">Cancelar</button><button class="primary">Guardar deuda</button></div>
+  </form></div>
+
+  <div class="overlay" id="payModal"><form class="modal" id="payForm">
+    <div class="modalTop"><div><div class="eyebrow" style="color:var(--olive)">REGISTRAR</div><h2>Nuevo pago</h2></div><button type="button" class="close" onclick="closeModal('payModal')">×</button></div>
+    <input type="hidden" id="payDebtId">
+    <div class="group"><label class="label">IMPORTE *</label><input class="field" id="payAmount" type="number" required min="0.01" step="0.01" inputmode="decimal"></div>
+    <div class="group"><label class="label">FECHA *</label><input class="field" id="payDate" type="date" required></div>
+    <div class="group"><label class="label">DETALLE</label><input class="field" id="payNote" maxlength="100" placeholder="Ej.: Transferencia"></div>
+    <div class="modalActions"><button type="button" class="secondary" onclick="closeModal('payModal')">Cancelar</button><button class="primary">Guardar pago</button></div>
+  </form></div>
+
+<script>
+let deferredInstallPrompt=null;
+const installBar=document.getElementById('installBar');
+const isStandalone=window.matchMedia('(display-mode: standalone)').matches||window.navigator.standalone===true;
+if('serviceWorker' in navigator&&location.protocol.startsWith('http')) navigator.serviceWorker.register('./sw.js');
+window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredInstallPrompt=e;if(!isStandalone)installBar.classList.add('show')});
+window.addEventListener('appinstalled',()=>{installBar.classList.remove('show');deferredInstallPrompt=null});
+document.getElementById('installBtn').addEventListener('click',async()=>{
+  if(deferredInstallPrompt){deferredInstallPrompt.prompt();await deferredInstallPrompt.userChoice;deferredInstallPrompt=null;installBar.classList.remove('show');return}
+  const ios=/iphone|ipad|ipod/i.test(navigator.userAgent);
+  alert(ios?'En Safari, tocá Compartir y luego “Agregar a inicio”.':'En el menú del navegador, elegí “Instalar aplicación” o “Agregar a pantalla principal”.');
+});
+const KEY='control_deudas_v1';let debts=load();let expanded=null;
+const $=s=>document.querySelector(s), money=n=>new Intl.NumberFormat('es-AR',{style:'currency',currency:'ARS',maximumFractionDigits:2}).format(n||0);
+const today=()=>new Date().toISOString().slice(0,10); const paid=d=>(d.payments||[]).reduce((s,p)=>s+Number(p.amount),0); const pending=d=>Math.max(0,Number(d.amount)-paid(d));
+function load(){try{return JSON.parse(localStorage.getItem(KEY))||[]}catch{return []}}
+function save(){localStorage.setItem(KEY,JSON.stringify(debts));render()}
+function esc(v=''){return String(v).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
+function fmtDate(v){if(!v)return 'Sin vencimiento';return new Date(v+'T12:00:00').toLocaleDateString('es-AR')}
+function status(d){if(pending(d)<=.009)return'done';if(d.due&&d.due<today())return'late';return'pending'}
+function render(){
+  const q=$('#search').value.trim().toLowerCase(), f=$('#filter').value;
+  const td=debts.reduce((s,d)=>s+Number(d.amount),0),tp=debts.reduce((s,d)=>s+paid(d),0);
+  $('#totalDebt').textContent=money(td);$('#totalPaid').textContent=money(tp);$('#totalPending').textContent=money(Math.max(0,td-tp));
+  let rows=debts.filter(d=>(f==='all'||status(d)===f)&&(d.name+' '+d.concept).toLowerCase().includes(q)).sort((a,b)=>(a.due||'9999').localeCompare(b.due||'9999'));
+  if(!rows.length){$('#list').innerHTML='<div class="empty"><b>No hay deudas para mostrar</b>Agregá una nueva o cambiá el filtro.</div>';return}
+  $('#list').innerHTML=rows.map(d=>{let p=paid(d),left=pending(d),pct=Math.min(100,d.amount?100*p/d.amount:0),st=status(d);let label=st==='done'?'PAGADA':st==='late'?'VENCIDA':'PENDIENTE';return `<article class="debt">
+    <div class="debtHead"><div><div class="titleRow"><h3>${esc(d.name)}</h3><span class="chip ${st}">${label}</span></div><div class="concept">${esc(d.concept)}</div></div><div class="amount"><strong>${money(left)}</strong><small>de ${money(d.amount)}</small></div></div>
+    <div class="bar"><span style="width:${pct}%"></span></div><div class="meta"><span>Pagado: <b>${money(p)}</b></span><span>Vence: <b>${fmtDate(d.due)}</b></span></div>
+    <div class="actions">${st!=='done'?`<button class="primary" onclick="openPay('${d.id}')">+ Registrar pago</button>`:''}<button class="secondary" onclick="toggleDetails('${d.id}')">${expanded===d.id?'Ocultar':'Ver detalle'}</button></div>
+    ${expanded===d.id?details(d):''}</article>`}).join('')
+}
+function details(d){let ps=(d.payments||[]).slice().sort((a,b)=>b.date.localeCompare(a.date));return `<div class="details"><b>Historial de pagos</b>${ps.length?ps.map(p=>`<div class="payRow"><div><strong>${money(p.amount)}</strong><br><small>${fmtDate(p.date)}${p.note?' · '+esc(p.note):''}</small></div><button class="miniDel" onclick="deletePayment('${d.id}','${p.id}')">Eliminar</button></div>`).join(''):'<p class="notes">Todavía no hay pagos registrados.</p>'}${d.notes?`<div class="notes"><b>Notas:</b> ${esc(d.notes)}</div>`:''}<div class="actions" style="padding:14px 0 0"><button class="secondary" onclick="editDebt('${d.id}')">Editar</button><button class="secondary danger" onclick="deleteDebt('${d.id}')">Eliminar deuda</button></div></div>`}
+function openDebt(){debtForm.reset();$('#debtId').value='';$('#debtModalTitle').textContent='Nueva deuda';show('debtModal')}
+function editDebt(id){let d=debts.find(x=>x.id===id);if(!d)return;$('#debtId').value=d.id;$('#name').value=d.name;$('#concept').value=d.concept;$('#amount').value=d.amount;$('#due').value=d.due||'';$('#notes').value=d.notes||'';$('#debtModalTitle').textContent='Editar deuda';show('debtModal')}
+function openPay(id){let d=debts.find(x=>x.id===id);$('#payDebtId').value=id;payForm.reset();$('#payDebtId').value=id;$('#payDate').value=today();$('#payAmount').max=pending(d);$('#payAmount').placeholder='Máximo '+money(pending(d));show('payModal');setTimeout(()=>$('#payAmount').focus(),100)}
+function show(id){$('#'+id).classList.add('show')}function closeModal(id){$('#'+id).classList.remove('show')}
+debtForm.addEventListener('submit',e=>{e.preventDefault();let id=$('#debtId').value,amount=Number($('#amount').value);let old=debts.find(d=>d.id===id);if(old&&amount+0.009<paid(old)){alert('El total no puede ser menor que los pagos ya registrados.');return}let data={id:id||crypto.randomUUID(),name:$('#name').value.trim(),concept:$('#concept').value.trim(),amount,due:$('#due').value,notes:$('#notes').value.trim(),payments:old?.payments||[],createdAt:old?.createdAt||new Date().toISOString()};if(old)debts=debts.map(d=>d.id===id?data:d);else debts.push(data);closeModal('debtModal');save()});
+payForm.addEventListener('submit',e=>{e.preventDefault();let d=debts.find(x=>x.id===$('#payDebtId').value),amount=Number($('#payAmount').value);if(amount>pending(d)+.009){alert('El pago supera el saldo pendiente de '+money(pending(d)));return}(d.payments||(d.payments=[])).push({id:crypto.randomUUID(),amount,date:$('#payDate').value,note:$('#payNote').value.trim()});expanded=d.id;closeModal('payModal');save()});
+function toggleDetails(id){expanded=expanded===id?null:id;render()}
+function deletePayment(did,pid){if(!confirm('¿Eliminar este pago?'))return;let d=debts.find(x=>x.id===did);d.payments=d.payments.filter(p=>p.id!==pid);save()}
+function deleteDebt(id){if(!confirm('¿Eliminar esta deuda y todo su historial de pagos?'))return;debts=debts.filter(d=>d.id!==id);expanded=null;save()}
+$('#search').addEventListener('input',render);$('#filter').addEventListener('change',render);$('#menuBtn').onclick=toggleMenu;function toggleMenu(){menu.classList.toggle('show')}
+function download(name,text,type){if(window.AndroidBridge?.saveFile){AndroidBridge.saveFile(name,text,type);return}let a=document.createElement('a');a.href=URL.createObjectURL(new Blob([text],{type}));a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}
+function exportBackup(){download('copia_deudas_'+today()+'.json',JSON.stringify({app:'Control de deudas',version:1,exportedAt:new Date().toISOString(),debts},null,2),'application/json');toggleMenu()}
+function exportCSV(){let lines=[['Nombre','Concepto','Deuda total','Pagado','Pendiente','Vencimiento','Estado'],...debts.map(d=>[d.name,d.concept,d.amount,paid(d),pending(d),d.due||'',status(d)])];download('resumen_deudas_'+today()+'.csv','\ufeff'+lines.map(r=>r.map(v=>'"'+String(v).replaceAll('"','""')+'"').join(';')).join('\n'),'text/csv;charset=utf-8');toggleMenu()}
+$('#importFile').addEventListener('change',async e=>{try{let obj=JSON.parse(await e.target.files[0].text()),data=Array.isArray(obj)?obj:obj.debts;if(!Array.isArray(data))throw Error();if(!confirm(`Se reemplazarán los datos actuales por ${data.length} deuda(s). ¿Continuar?`))return;debts=data;expanded=null;save();toggleMenu()}catch{alert('El archivo no es una copia válida.')}finally{e.target.value=''}});
+document.querySelectorAll('.overlay').forEach(x=>x.addEventListener('click',e=>{if(e.target===x)closeModal(x.id)}));render();
+</script>
+</body></html>
